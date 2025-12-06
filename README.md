@@ -12,9 +12,15 @@ Full-stack telecom churn prediction: from raw data → EDA → feature engineeri
 ![AWS](https://img.shields.io/badge/Deployed-AWS%20EC2-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-## Live Web App  
-http://your-ec2-public-ip:5000 (or your domain)
-Dataset & Challenge
+Ex.
+
+| ![Image 1](assets/app_img1.png)             | ![Image 2](assets/app_img2.png) |
+|---------------------------------------------|---------------------------------|
+
+| ![Image 3](assets/app_img3.png) | ![Image 4](assets/app_img4.png) |
+|---------------------------------|---------------------------------|
+
+[//]: # (## Live Web App  )
 
 ### Dataset & Challenge
 - IBM Telco Customer Churn (7043 rows)
