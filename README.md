@@ -106,5 +106,3 @@ python web-app/app.py
 **Star this repo if it helped you!**  
 Made by [Aditya Patayane] | [LinkedIn](https://www.linkedin.com/in/aditya-patayane-a506b1252/) | Open for Data Science / ML Engineer roles  
 Last Updated: December 2025
-
-Done bro — ekdum clean, professional aur portfolio-ready README! Just change the links and your name.
