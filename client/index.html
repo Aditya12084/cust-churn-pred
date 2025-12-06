@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Churn Prediction</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #f4f6f9;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px 45px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+      }
+
+      h1 {
+        text-align: center;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .input-box {
+        flex: 1 1 calc(50% - 20px);
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: url("https://images.unsplash.com/photo-1639325778008-7cb6c94d49fd?ixlib=rb-4.0.3&auto=format&fit=crop&q=85")
+          center/cover no-repeat fixed;
+        min-height: 100vh;
+        padding: 20px 0;
+        color: var(--gray-800);
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1;
+      }
+
+      .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .input-box label {
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .input-box input,
+      .input-box select {
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      .input-box input:focus,
+      .input-box select:focus {
+        outline: none;
+        border-color: #4a90e2;
+      }
+
+      .btn-container {
+        text-align: center;
+        margin-top: 25px;
+      }
+
+      .btn-container button {
+        background: #4a90e2;
+        border: none;
+        color: white;
+        padding: 12px 26px;
+        font-size: 17px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .btn-container button:hover {
+        background: #3577c9;
+      }
+
+      .output-box {
+        margin-top: 30px;
+        padding: 18px;
+        background: #eff5ff;
+        border-left: 6px solid #4a90e2;
+        border-radius: 8px;
+      }
+
+      .output-title {
+        font-weight: 600;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .output-text {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #444;
+      }
+
+      @media (max-width: 768px) {
+        .input-box {
+          flex: 1 1 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Customer Churn Prediction</h1>
+
+      <form action="/" method="POST" id="predictionForm">
+        <div class="form-row">
+          <div class="input-box">
+            <label>Gender</label>
+            <select name="query1" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+
+          <!-- Example fields (continue same pattern for all inputs) -->
+          <div class="input-box">
+            <label>Senior Citizen</label>
+            <select name="query2" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Partner</label>
+            <select name="query3" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Dependents</label>
+            <select name="query4" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Tenure</label>
+            <input type="number" name="query5" required />
+          </div>
+
+          <div class="input-box">
+            <label>Phone Service</label>
+            <select name="query6" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Multiple Lines</label>
+            <select name="query7" required>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+              <option value="No phone service">No phone service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Internet Service</label>
+            <select name="query8" required>
+              <option value="DSL">DSL</option>
+              <option value="Fiber optic">Fiber optic</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Online Security</label>
+            <select name="query9" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Online Backup</label>
+            <select name="query10" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Device Protection</label>
+            <select name="query11" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Tech Support</label>
+            <select name="query12" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Streaming TV</label>
+            <select name="query13" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Streaming Movies</label>
+            <select name="query14" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="No internet service">No internet service</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Contract</label>
+            <select name="query15" required>
+              <option value="Month-to-month">Month-to-month</option>
+              <option value="One year">One year</option>
+              <option value="Two year">Two year</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Paperless Billing</label>
+            <select name="query16" required>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Payment Method</label>
+            <select name="query17" required>
+              <option value="Electronic check">Electronic check</option>
+              <option value="Mailed check">Mailed check</option>
+              <option value="Bank transfer (automatic)"
+                >Bank transfer (automatic)</option
+              >
+              <option value="Credit card (automatic)"
+                >Credit card (automatic)</option
+              >
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label>Monthly Charges</label>
+            <input type="number" step="0.01" name="query18" required />
+          </div>
+
+          <div class="input-box">
+            <label>Total Charges</label>
+            <input type="number" step="0.01" name="query19" required />
+          </div>
+        </div>
+
+        <div class="btn-container">
+          <button type="submit">Predict Churn</button>
+        </div>
+      </form>
+
+      {% if probability %}
+      <div class="result" style="text-align: center; padding-top: 25px;">
+        {% if final_class == 1 %}
+
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#ef4444"
+          stroke-width="2.5"
+          style="margin: 0 auto 20px; display: block;"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M15 9l-6 6" />
+          <path d="M9 9l6 6" />
+        </svg>
+        {% else %}
+
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#10b981"
+          stroke-width="2.5"
+          style="margin: 0 auto 20px; display: block;"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12l2 2 4-4" />
+        </svg>
+        {% endif %}
+
+        <div class="probability" style="font-size: 2rem; margin-bottom: 10px;">
+          Predicted Probability: <strong>{{ probability }}</strong>
+        </div>
+
+        <div
+          style="
+        font-size: 2.6rem;
+        font-weight: 900;
+        margin: 20px 0;
+        color: {{ '#ef4444' if final_class == 1 else '#10b981' }};
+    "
+        >
+          {{ "WILL CHURN" if final_class == 1 else "WILL STAY" }}
+        </div>
+
+        <div
+          style="
+        font-size: 1.4rem;
+        opacity: 0.9;
+        background: {{ '#fee2e2' if final_class == 1 else '#dcfce7' }};
+        color: {{ '#991b1b' if final_class == 1 else '#166534' }};
+        padding: 12px 32px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 10px;
+    "
+        >
+          Risk Class: <strong>{{ final_class }}</strong>
+          {% if final_class == 1 %} (Action Required) {% else %} (Safe) {% endif
+          %}
+        </div>
+      </div>
+      {% endif %}
+      <div style="margin: 2rem 0; text-align: center; font-family: system-ui;">
+        <p style="margin-bottom: 1rem; color: #333; font-size: 1rem;">
+          Need the exact input format or want to verify predictions yourself?
+        </p>
+        <a
+          href="https://docs.google.com/spreadsheets/d/1mWN5hmETOwR5NofQVcH-y6eA04BfQc72tsZIt8DQRZw/edit?usp=sharing"
+          target="_blank"
+          style="color: #2563eb; text-decoration: underline; font-weight: 500;"
+        >
+          → Open Reference Spreadsheet (same logic as this app)
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Example JS (optional improvement)
+      document
+        .getElementById("predictionForm")
+        .addEventListener("submit", function () {
+          console.log("Form submitted!");
+        });
+    </script>
+  </body>
+</html>
