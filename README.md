@@ -88,7 +88,7 @@ cust_churn_pred/
 ## How to Run Locally
 ```bash
 # 1. Clone & install
-git clone https://github.com/yourusername/customer-churn-prediction.git
+git clone https://github.com/Aditya12084/cust-churn-pred.git
 cd customer-churn-prediction
 pip install -r requirements.txt
 
