@@ -34,7 +34,7 @@ Ex.
 - Correct data types & encoding
 
 ### 2. Exploratory Data Analysis + Feature Engineering
-- Univariate, bivariate, correlation heatmap
+- Univariate, bivariate, Numerical analysis
 - Engineered 5  features:
   - `ProtectionScore` (0–4)  
   - `IsNewHighValue`  
